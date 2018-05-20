@@ -2,5 +2,6 @@
 coverage/
 dist/
 node_modules/
+*.tgz
 
 src/*.spec.ts
