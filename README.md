@@ -1,6 +1,6 @@
 # ionic-logging-viewer
 
-**The dependencies used by the latest version are the same as needed for [Ionic 3.9.0](https://github.com/ionic-team/ionic/blob/master/CHANGELOG.md). For older versions use:**
+**The dependencies used by the latest version are the same as needed for [Ionic 3.9.0](https://github.com/ionic-team/ionic/blob/master/CHANGELOG.md).**
 
 [![Build](https://travis-ci.org/Ritzlgrmft/ionic-logging-viewer.svg?branch=master)](https://travis-ci.org/Ritzlgrmft/ionic-logging-viewer)
 [![Codecov](https://codecov.io/gh/Ritzlgrmft/ionic-logging-viewer/branch/master/graph/badge.svg)](https://codecov.io/gh/Ritzlgrmft/ionic-logging-viewer)
