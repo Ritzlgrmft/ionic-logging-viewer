@@ -4,4 +4,4 @@ dist/
 node_modules/
 *.tgz
 
-src/*.spec.ts
+src/*.spec.tsxxx
