@@ -74,19 +74,19 @@ export class LoggingViewerComponent implements OnInit, OnDestroy {
 		this.logger.exit(methodName);
 	}
 
-	private filterLogMessages(): void {
+	public filterLogMessages(): void {
 		this.logMessagesForDisplay = this.logMessages.filter((message) => {
 			return this.filterLogMessagesByLevel(message) && this.filterLogMessagesBySearch(message);
 		});
 	}
 
-	private filterLogMessagesByLevel(message: LogMessage): boolean {
+	public filterLogMessagesByLevel(message: LogMessage): boolean {
 		const levelValue = this.loggingViewerFilterService.level;
 		return LogLevelConverter.levelFromString(message.level) >= LogLevelConverter.levelFromString(levelValue);
 	}
 
-	private filterLogMessagesBySearch(message: LogMessage): boolean {
-		const searchValue = new RegExp(this.loggingViewerFilterService.search);
+	public filterLogMessagesBySearch(message: LogMessage): boolean {
+		const searchValue = new RegExp(this.loggingViewerFilterService.search, "i");
 		return message.logger.search(searchValue) >= 0 ||
 			message.methodName.search(searchValue) >= 0 ||
 			message.message.join("|").search(searchValue) >= 0;
