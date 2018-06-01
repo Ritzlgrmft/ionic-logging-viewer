@@ -13,7 +13,7 @@ import { LoggingViewerFilterService } from "./logging-viewer-filter.service";
 	selector: "ionic-logging-viewer-search",
 	template:
 	"<ion-searchbar placeholder=\"{{placeholder}}\" [(ngModel)]=\"search\" " +
-	"(ionInput)=\"onFilterChanged($event)\"></ion-searchbar>",
+	"(ionInput)=\"onSearchChanged()\"></ion-searchbar>",
 })
 export class LoggingViewerSearchComponent implements OnInit, OnDestroy {
 
@@ -61,12 +61,12 @@ export class LoggingViewerSearchComponent implements OnInit, OnDestroy {
 
 		this.logger.exit(methodName);
 	}
-	public onFilterChanged(event: Event): void {
-		const methodName = "onFilterChanged";
-		const value = (event.target as HTMLInputElement).value;
-		this.logger.entry(methodName, value);
 
-		this.loggingViewerFilterService.search = value;
+	public onSearchChanged(): void {
+		const methodName = "onSearchChanged";
+		this.logger.entry(methodName);
+
+		this.loggingViewerFilterService.search = this.search;
 
 		this.logger.exit(methodName);
 	}
