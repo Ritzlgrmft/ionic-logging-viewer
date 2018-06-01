@@ -42,7 +42,6 @@ describe("LoggingViewerSearchComponent", () => {
 
 	beforeEach(() => {
 		fixture = TestBed.createComponent(LoggingViewerSearchComponent);
-		fixture.detectChanges();
 
 		component = fixture.componentInstance;
 
@@ -54,6 +53,8 @@ describe("LoggingViewerSearchComponent", () => {
 
 		it("gets correct named logger", () => {
 
+			fixture.detectChanges();
+
 			expect(loggingServiceStub.getLogger).toHaveBeenCalledWith("Ionic.Logging.Viewer.Search.Component");
 		});
 	});
@@ -61,6 +62,8 @@ describe("LoggingViewerSearchComponent", () => {
 	describe("filterChangedSubscription", () => {
 
 		it("event updates search value", () => {
+
+			fixture.detectChanges();
 
 			loggingViewerFilterService.search += "X";
 
@@ -72,10 +75,31 @@ describe("LoggingViewerSearchComponent", () => {
 
 		it("updates value in filter service", () => {
 
+			fixture.detectChanges();
+
 			component.search += "Y";
 			component.onSearchChanged();
 
 			expect(loggingViewerFilterService.search).toBe(component.search);
+		});
+	});
+
+	describe("ngOnInit", () => {
+
+		it("use default, if no value for placeholder", () => {
+
+			fixture.detectChanges();
+
+			expect(component.placeholder).toBe("Search");
+		});
+
+		it("given value for placeholder", () => {
+
+			component.placeholder = "abc";
+
+			fixture.detectChanges();
+
+			expect(component.placeholder).toBe("abc");
 		});
 	});
 });

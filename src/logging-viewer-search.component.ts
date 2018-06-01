@@ -32,17 +32,17 @@ export class LoggingViewerSearchComponent implements OnInit, OnDestroy {
 		const methodName = "ctor";
 		this.logger.entry(methodName);
 
-		if (!this.placeholder) {
-			this.placeholder = "Search";
-		}
-		this.search = this.loggingViewerFilterService.search;
-
 		this.logger.exit(methodName);
 	}
 
 	public ngOnInit(): void {
 		const methodName = "ngOnInit";
 		this.logger.entry(methodName);
+
+		if (!this.placeholder) {
+			this.placeholder = "Search";
+		}
+		this.search = this.loggingViewerFilterService.search;
 
 		// subscribe to loggingViewerFilterService.filterChanged event, to refresh,
 		// when someone else modifies the search value
