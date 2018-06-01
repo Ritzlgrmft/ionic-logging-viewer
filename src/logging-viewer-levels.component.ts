@@ -41,7 +41,6 @@ export class LoggingViewerLevelsComponent implements OnInit, OnDestroy {
 			"WARN",
 			"ERROR",
 		);
-		this.selectedLevel = loggingViewerFilterService.level;
 
 		this.logger.exit(methodName);
 	}
@@ -49,6 +48,8 @@ export class LoggingViewerLevelsComponent implements OnInit, OnDestroy {
 	public ngOnInit(): void {
 		const methodName = "ngOnInit";
 		this.logger.entry(methodName);
+
+		this.selectedLevel = this.loggingViewerFilterService.level;
 
 		// subscribe to loggingViewerFilterService.filterChanged event, to refresh,
 		// when someone else modifies the level
