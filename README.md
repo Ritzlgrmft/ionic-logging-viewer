@@ -35,7 +35,7 @@ A sample app using these components is [ionic-logging-sample](https://github.com
 
 ## Screenshots
 
-tbd
+![Logging Modal](docs/logging-modal.png)
 
 ## Usage
 
@@ -104,7 +104,18 @@ public openModal(): void {
 
 ### multi language support
 
-tbd
+The `LoggingViewerComponent` does not need multi language support, since it just
+displays the logged data. The same applies to `LoggingViewerLevelsComponent`
+and `LoggingViewerSearchComponent`.
+
+But for the `LoggingViewerModalComponent`, multi language support is needed,
+since the modal contains some translatable texts. Therefore,
+`loggingViewerModalManager.openModal()` has a `language` parameter, which you can
+use to select the language. Currently `en` and `de` are supported.
+
+If you need another language, either open an issue, or just use the `translation` parameter.
+This parameter you can use to pass your completely own texts.
+Just fill the `LoggingViewerTranslation` object.
 
 ## API
 
