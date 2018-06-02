@@ -7,7 +7,10 @@ import { LoggingViewerFilterService } from "./logging-viewer-filter.service";
 
 /**
  * Component for displaying the current logs.
- * The component can be embedded in any web page using the directive ionic-logging-viewer.
+ *
+ * The component can be embedded in any web page using:
+ *
+ * &lt;ionic-logging-viewer>&lt;/ionic-logging-viewer>
  */
 @Component({
 	selector: "ionic-logging-viewer",
@@ -25,6 +28,9 @@ import { LoggingViewerFilterService } from "./logging-viewer-filter.service";
 })
 export class LoggingViewerComponent implements OnInit, OnDestroy {
 
+	/**
+	 * Log messages which fulfill the filter condition.
+	 */
 	public logMessagesForDisplay: LogMessage[];
 
 	private logger: Logger;
@@ -43,6 +49,12 @@ export class LoggingViewerComponent implements OnInit, OnDestroy {
 		this.logger.exit(methodName);
 	}
 
+	/**
+	 * Initialize the component.
+	 *
+	 * This is done by reading the filter data from [LoggingViewerFilterService](LoggingViewerFilterService.html)
+	 * and the log messages from [LoggingService](../../../ionic-logging-service/typedoc/index.html).
+	 */
 	public ngOnInit(): void {
 		const methodName = "ngOnInit";
 		this.logger.entry(methodName);
@@ -64,6 +76,9 @@ export class LoggingViewerComponent implements OnInit, OnDestroy {
 		this.logger.exit(methodName);
 	}
 
+	/**
+	 * Clean up.
+	 */
 	public ngOnDestroy(): void {
 		const methodName = "ngOnDestroy";
 		this.logger.entry(methodName);
@@ -74,17 +89,37 @@ export class LoggingViewerComponent implements OnInit, OnDestroy {
 		this.logger.exit(methodName);
 	}
 
+	/**
+	 * Filter the log messages.
+	 */
 	public filterLogMessages(): void {
 		this.logMessagesForDisplay = this.logMessages.filter((message) => {
 			return this.filterLogMessagesByLevel(message) && this.filterLogMessagesBySearch(message);
 		});
 	}
 
+	/**
+	 * Check if the log message's level fulfills the level condition.
+	 *
+	 * @param message the log message to check
+	 * @returns true if check was successful
+	 */
 	public filterLogMessagesByLevel(message: LogMessage): boolean {
 		const levelValue = this.loggingViewerFilterService.level;
 		return LogLevelConverter.levelFromString(message.level) >= LogLevelConverter.levelFromString(levelValue);
 	}
 
+	/**
+	 * Check if the log message fulfills the search condition.
+	 *
+	 * The search value gets searched in:
+	 * - logger name
+	 * - method name
+	 * - message
+	 *
+	 * @param message the log message to check
+	 * @returns true if check was successful
+	 */
 	public filterLogMessagesBySearch(message: LogMessage): boolean {
 		const searchValue = new RegExp(this.loggingViewerFilterService.search, "i");
 		return message.logger.search(searchValue) >= 0 ||

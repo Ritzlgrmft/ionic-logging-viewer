@@ -7,7 +7,10 @@ import { LoggingViewerFilterService } from "./logging-viewer-filter.service";
 
 /**
  * Component for displaying the log levels for filtering the current logs.
- * The component can be embedded in any web page using the directive ionic-logging-viewer-levels.
+ *
+ * The component can be embedded in any web page using:
+ *
+ * &lt;ionic-logging-viewer-levels>&lt;/ionic-logging-viewer-levels>
  */
 @Component({
 	selector: "ionic-logging-viewer-levels",
@@ -20,7 +23,14 @@ import { LoggingViewerFilterService } from "./logging-viewer-filter.service";
 })
 export class LoggingViewerLevelsComponent implements OnInit, OnDestroy {
 
+	/**
+	 * Log levels used for filtering: DEBUG, INFO, WARN, ERROR
+	 */
 	public logLevels: string[];
+
+	/**
+	 * Selected level.
+	 */
 	public selectedLevel: string;
 
 	private logger: Logger;
@@ -45,6 +55,11 @@ export class LoggingViewerLevelsComponent implements OnInit, OnDestroy {
 		this.logger.exit(methodName);
 	}
 
+	/**
+	 * Initialize the component.
+	 *
+	 * This is done by reading the filter data from [LoggingViewerFilterService](LoggingViewerFilterService.html).
+	 */
 	public ngOnInit(): void {
 		const methodName = "ngOnInit";
 		this.logger.entry(methodName);
@@ -60,6 +75,9 @@ export class LoggingViewerLevelsComponent implements OnInit, OnDestroy {
 		this.logger.exit(methodName);
 	}
 
+	/**
+	 * Clean up.
+	 */
 	public ngOnDestroy(): void {
 		const methodName = "ngOnDestroy";
 		this.logger.entry(methodName);
@@ -69,6 +87,9 @@ export class LoggingViewerLevelsComponent implements OnInit, OnDestroy {
 		this.logger.exit(methodName);
 	}
 
+	/**
+	 * Callback when the level was changed in the UI.
+	 */
 	public onLevelChanged(): void {
 		const methodName = "onLevelChanged";
 		this.logger.entry(methodName, this.selectedLevel);

@@ -108,4 +108,4 @@ tbd
 
 ## API
 
-tbd
+see [API documentation](typedoc/index.html).

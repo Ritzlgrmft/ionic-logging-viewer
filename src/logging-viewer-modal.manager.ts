@@ -7,7 +7,8 @@ import { LoggingViewerTranslation } from "./logging-viewer-translation.model";
 import { Logger, LoggingService } from "ionic-logging-service";
 
 /**
- * Helper class which makes the usage of the LoggingViewerModalComponent more comfortable.
+ * Helper class which makes the usage of the
+ * [LoggingViewerModalComponent](LoggingViewerModalComponent.html) more comfortable.
  */
 @Injectable()
 export class LoggingViewerModalManager {
@@ -15,7 +16,7 @@ export class LoggingViewerModalManager {
 	/**
 	 * Event submitted when the modal gets closed.
 	 */
-	public modalClosed = new EventEmitter<void>();
+	public modalClosed: EventEmitter<void>;
 
 	// tslint:disable-next-line:completed-docs
 	private logger: Logger;
@@ -27,6 +28,8 @@ export class LoggingViewerModalManager {
 		this.logger = loggingService.getLogger("Ionic.Logging.Viewer.Modal.Manager");
 		const methodName = "ctor";
 		this.logger.entry(methodName);
+
+		this.modalClosed = new EventEmitter<void>();
 
 		this.logger.exit(methodName);
 	}

@@ -1,5 +1,6 @@
 /**
- * Describes all values needed in a translation.
+ * Describes all values needed in a translation for
+ * [LoggingViewerModalComponent](../classes/LoggingViewerModalComponent.html).
  */
 export interface LoggingViewerTranslation {
 	/**

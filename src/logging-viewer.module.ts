@@ -15,12 +15,16 @@ import { LoggingViewerComponent } from "./logging-viewer.component";
  * The module is meant for use at development and test, not for production.
  *
  * The module contains mainly
- * - LoggingViewerComponent: directive showing the data, which can placed anywhere in your app
- * - LoggingViewerModalManager: provides method to open a modal containing the component
+ * - [LoggingViewerComponent](LoggingViewerComponent.html):
+ *   directive showing the data, which can placed anywhere in your app
+ * - [LoggingViewerModalManager](LoggingViewerModalManager.html):
+ *   provides method to open a modal containing the component
  *
  * Additionally, there are two components for filtering the data:
- * - LoggingViewerLevelComponent: allows filtering by log level
- * - LoggingViewerSearchComponent: allows filtering by an arbitrary expression
+ * - [LoggingViewerLevelsComponent](LoggingViewerLevelsComponent.html):
+ *   allows filtering by log level
+ * - [LoggingViewerSearchComponent](LoggingViewerSearchComponent.html):
+ *   allows filtering by an arbitrary expression
  */
 @NgModule({
 	declarations: [

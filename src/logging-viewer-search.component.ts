@@ -7,7 +7,10 @@ import { LoggingViewerFilterService } from "./logging-viewer-filter.service";
 
 /**
  * Component for displaying the search bar for filtering the current logs.
- * The component can be embedded in any web page using the directive ionic-logging-viewer-search.
+ *
+ * The component can be embedded in any web page using:
+ *
+ * &lt;ionic-logging-viewer-search placeholder="Search">&lt;/ionic-logging-viewer-search>
  */
 @Component({
 	selector: "ionic-logging-viewer-search",
@@ -17,8 +20,15 @@ import { LoggingViewerFilterService } from "./logging-viewer-filter.service";
 })
 export class LoggingViewerSearchComponent implements OnInit, OnDestroy {
 
+	/**
+	 * Placeholder to be shown in the empty search bar.
+	 */
 	@Input()
 	public placeholder: string;
+
+	/**
+	 * Current search value.
+	 */
 	public search: string;
 
 	private logger: Logger;
@@ -35,6 +45,11 @@ export class LoggingViewerSearchComponent implements OnInit, OnDestroy {
 		this.logger.exit(methodName);
 	}
 
+	/**
+	 * Initialize the component.
+	 *
+	 * This is done by reading the filter data from [LoggingViewerFilterService](LoggingViewerFilterService.html).
+	 */
 	public ngOnInit(): void {
 		const methodName = "ngOnInit";
 		this.logger.entry(methodName);
@@ -53,6 +68,9 @@ export class LoggingViewerSearchComponent implements OnInit, OnDestroy {
 		this.logger.exit(methodName);
 	}
 
+	/**
+	 * Clean up.
+	 */
 	public ngOnDestroy(): void {
 		const methodName = "ngOnDestroy";
 		this.logger.entry(methodName);
@@ -62,6 +80,9 @@ export class LoggingViewerSearchComponent implements OnInit, OnDestroy {
 		this.logger.exit(methodName);
 	}
 
+	/**
+	 * Callback when the search value was changed in the UI.
+	 */
 	public onSearchChanged(): void {
 		const methodName = "onSearchChanged";
 		this.logger.entry(methodName);

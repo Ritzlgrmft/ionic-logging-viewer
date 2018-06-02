@@ -28,6 +28,7 @@
 		"report-coverage": "codecov",
 		"semantic-release": "semantic-release",
 		"test": "npm run build && npm run lint && npm run karma-once",
+		"typedoc": "typedoc src --out typedoc --exclude \"**/*.spec.ts\" --mode file --readme none --excludePrivate",
 		"travis-deploy-once": "travis-deploy-once"
 	},
 	"files": [
@@ -65,15 +66,13 @@
 		"@angular/platform-browser": "5.0.0",
 		"@angular/platform-browser-dynamic": "5.0.0",
 		"@angular/platform-server": "5.0.0",
-		"ionic-angular": "3.9.2",
-		"rxjs": "5.5.2",
-		"zone.js": "0.8.18",
-		"@types/jasmine": "2.8.7",
+		"@types/jasmine": "2.8.8",
 		"babel-polyfill": "6.26.0",
 		"codecov": "3.0.2",
 		"codelyzer": "4.3.0",
-		"commitizen": "2.9.6",
+		"commitizen": "2.10.1",
 		"cz-conventional-changelog": "2.1.0",
+		"ionic-angular": "3.9.2",
 		"jasmine-core": "2.99.1",
 		"karma": "2.0.2",
 		"karma-chrome-launcher": "2.2.0",
@@ -83,11 +82,14 @@
 		"karma-typescript-es6-transform": "1.0.4",
 		"reflect-metadata": "0.1.12",
 		"requirejs": "2.3.5",
-		"rollup": "0.56.3",
+		"rollup": "0.59.4",
+		"rxjs": "5.5.2",
+		"semantic-release": "15.5.0",
+		"travis-deploy-once": "5.0.0",
 		"tslint": "5.10.0",
+		"typedoc": "0.11.1",
 		"typescript": "2.4.2",
-		"semantic-release": "15.4.1",
-		"travis-deploy-once": "5.0.0"
+		"zone.js": "0.8.18"
 	},
 	"config": {
 		"commitizen": {

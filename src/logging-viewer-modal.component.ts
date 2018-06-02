@@ -6,7 +6,9 @@ import { Logger, LoggingService } from "ionic-logging-service";
 import { LoggingViewerTranslation } from "./logging-viewer-translation.model";
 
 /**
- * Ionic modal containing the LoggingViewerComponent.
+ * Ionic modal containing [LoggingViewerComponent](LoggingViewerComponent.html),
+ * [LoggingViewerLevelsComponent](LoggingViewerLevelsComponent.html) and
+ * [LoggingViewerSearchComponent](LoggingViewerSearchComponent.html).
  */
 @Component({
 	template:
@@ -34,6 +36,9 @@ import { LoggingViewerTranslation } from "./logging-viewer-translation.model";
 	"</ion-content>",
 })
 export class LoggingViewerModalComponent implements OnInit {
+
+	private static languageEn = "en";
+	private static languageDe = "de";
 
 	/**
 	 * Language to be used for the modal.
@@ -75,14 +80,12 @@ export class LoggingViewerModalComponent implements OnInit {
 	public ngOnInit(): void {
 		// prepare translations
 		this.translations = {};
-		// tslint:disable-next-line:no-string-literal
-		this.translations["en"] = {
+		this.translations[LoggingViewerModalComponent.languageEn] = {
 			cancel: "Cancel",
 			searchPlaceholder: "Search",
 			title: "Logging",
 		};
-		// tslint:disable-next-line:no-string-literal
-		this.translations["de"] = {
+		this.translations[LoggingViewerModalComponent.languageDe] = {
 			cancel: "Abbrechen",
 			searchPlaceholder: "Suchen",
 			title: "Konfiguration",
@@ -123,8 +126,7 @@ export class LoggingViewerModalComponent implements OnInit {
 		} else if (typeof this.language !== "undefined" && typeof this.translations[this.language] === "object") {
 			return this.translations[this.language];
 		} else {
-			// tslint:disable-next-line:no-string-literal
-			return this.translations["en"];
+			return this.translations[LoggingViewerModalComponent.languageEn];
 		}
 	}
 }
