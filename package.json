@@ -73,7 +73,7 @@
 		"commitizen": "2.10.1",
 		"cz-conventional-changelog": "2.1.0",
 		"ionic-angular": "3.9.2",
-		"jasmine-core": "2.99.1",
+		"jasmine-core": "3.1.0",
 		"karma": "2.0.2",
 		"karma-chrome-launcher": "2.2.0",
 		"karma-jasmine": "1.1.2",
@@ -89,7 +89,7 @@
 		"tslint": "5.10.0",
 		"typedoc": "0.11.1",
 		"typescript": "2.4.2",
-		"zone.js": "0.8.18"
+		"zone.js": "0.8.26"
 	},
 	"config": {
 		"commitizen": {
