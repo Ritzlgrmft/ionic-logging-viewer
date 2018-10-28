@@ -17,6 +17,10 @@ export class LoggingViewerFilterService {
 	private levelValue: string;
 	private searchValue: string;
 
+	/**
+	 * Creates a new instance of the service.
+	 * @param loggingService needed for internal logging.
+	 */
 	constructor(
 		loggingService: LoggingService) {
 

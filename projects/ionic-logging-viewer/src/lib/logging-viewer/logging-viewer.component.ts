@@ -29,6 +29,9 @@ export class LoggingViewerComponent implements OnInit, OnDestroy {
 	private logMessagesChangedSubscription: Subscription;
 	private filterChangedSubscription: Subscription;
 
+	/**
+	 * Creates a new instance of the component.
+	 */
 	constructor(
 		private loggingService: LoggingService,
 		private loggingViewerFilterService: LoggingViewerFilterService) {

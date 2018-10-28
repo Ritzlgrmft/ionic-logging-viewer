@@ -40,6 +40,9 @@ export class LoggingViewerModalComponent implements OnInit {
 	// tslint:disable-next-line:completed-docs
 	private translations: { [language: string]: LoggingViewerTranslation; };
 
+	/**
+	 * Creates a new instance of the component.
+	 */
 	constructor(
 		private modalController: ModalController,
 		navParams: NavParams,
