@@ -3,7 +3,24 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-	production: false
+	production: false,
+
+	logging: {
+		"logLevels": [
+			{
+				"loggerName": "root",
+				"logLevel": "DEBUG"
+			},
+			{
+				"loggerName": "Ionic.Logging",
+				"logLevel": "OFF"
+			}
+		],
+		"localStorageAppender": {
+			"localStorageKey": "ionic.logging.sample",
+			"threshold": "INFO"
+		}
+	}
 };
 
 /*
