@@ -1,0 +1,26 @@
+<ion-header>
+	<ion-toolbar color=primary>
+		<ion-title>{{ getTranslation().title }}</ion-title>
+		<ion-buttons slot="start">
+			<ion-show-when modes="ios">
+				<ion-button (click)="onClose()">
+					{{ getTranslation().cancel }}
+				</ion-button>
+			</ion-show-when>
+			<ion-show-when modes="md">
+				<ion-button icon-only (click)="onClose()">
+					<ion-icon name="md-close"></ion-icon>
+				</ion-button>
+			</ion-show-when>
+		</ion-buttons>
+	</ion-toolbar>
+	<ion-toolbar>
+		<ionic-logging-viewer-search [placeholder]="getTranslation().searchPlaceholder"></ionic-logging-viewer-search>
+	</ion-toolbar>
+	<ion-toolbar>
+		<ionic-logging-viewer-levels></ionic-logging-viewer-levels>
+	</ion-toolbar>
+</ion-header>
+<ion-content>
+	<ionic-logging-viewer></ionic-logging-viewer>
+</ion-content>
