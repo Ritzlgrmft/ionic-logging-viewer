@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
-import { FormsModule } from "../../../../../node_modules/@angular/forms";
+import { FormsModule } from "@angular/forms";
 import { IonicModule } from "@ionic/angular";
 
 import { LoggingService } from "ionic-logging-service";

@@ -1,14 +1,34 @@
-import { AppPage } from "./app.po";
+import { browser } from "protractor";
 
-describe("workspace-project App", () => {
+import { AppPage } from "./app.po";
+import { protractor } from "protractor/built/ptor";
+import { Utils } from "./utils";
+
+describe("ionic-logging-viewer-app", () => {
 	let page: AppPage;
 
-	beforeEach(() => {
+	beforeEach(async (done) => {
 		page = new AppPage();
+		await page.navigateTo();
+		done();
 	});
 
-	it("should display welcome message", () => {
-		page.navigateTo();
-		expect(page.getParagraphText()).toEqual("Welcome to ionic-logging-viewer-app!");
+	it("should redirect to home page", async (done) => {
+		let homePageUrl = browser.baseUrl;
+		if (!homePageUrl.endsWith("/")) {
+			homePageUrl += "/";
+		}
+		homePageUrl += "home";
+
+		let currentUrl: string;
+		do {
+			Utils.sleep(500);
+			currentUrl = await browser.getCurrentUrl();
+			// tslint:disable-next-line:no-console
+			console.info(currentUrl, homePageUrl);
+		} while (currentUrl !== homePageUrl);
+
+		expect(currentUrl).toBe(homePageUrl);
+		done();
 	});
 });
