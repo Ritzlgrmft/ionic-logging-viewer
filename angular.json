@@ -143,6 +143,11 @@
 					"options": {
 						"tsConfig": "projects/ionic-logging-viewer/tsconfig.lib.json",
 						"project": "projects/ionic-logging-viewer/ng-package.json"
+					},
+					"configurations": {
+						"production": {
+							"project": "projects/ionic-logging-viewer/ng-package.prod.json"
+						}
 					}
 				},
 				"test": {
