@@ -17,7 +17,7 @@
 	],
 	"scripts": {
 		"build": "ng build ionic-logging-viewer --prod && cpx '{BREAKING,CHANGELOG,README}.md' dist/ionic-logging-viewer --verbose",
-		"test": "ng test ionic-logging-viewer --code-coverage --watch false --browsers ChromeHeadless && compodoc --coverageTest 100 && ng lint && ng e2e",
+		"test": "ng test ionic-logging-viewer --code-coverage --watch false --browsers ChromeHeadless && compodoc --coverageTest 100 && ng lint && ng build ionic-logging-viewer --prod && ng e2e",
 		"test-watch": "ng test ionic-logging-viewer --code-coverage",
 		"lint": "ng lint",
 		"e2e": "ng e2e",
