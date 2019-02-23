@@ -151,7 +151,7 @@ export class HomePage {
 		logger.exit(this.testMethod, this.message);
 	}
 
-	public async openModal() {
+	public async openModal(): Promise<void> {
 		let componentProps: any;
 		if (this.selectedLanguage === "custom") {
 			componentProps = { translation: this.translation };

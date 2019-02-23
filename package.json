@@ -16,15 +16,14 @@
 		"log4javascript"
 	],
 	"scripts": {
-		"build": "ng build ionic-logging-viewer --prod && cpx '{BREAKING,CHANGELOG,README}.md' dist/ionic-logging-viewer --verbose",
-		"test": "ng test ionic-logging-viewer --code-coverage --watch false --browsers ChromeHeadless && compodoc --coverageTest 100 && ng lint && ng build ionic-logging-viewer --prod && ng e2e",
+		"build": "ng build ionic-logging-viewer --prod && cpx 'projects/ionic-logging-viewer/README.md' dist/ionic-logging-viewer --verbose",
+		"test": "ng test ionic-logging-viewer --code-coverage --watch false --browsers ChromeHeadless && cd projects/ionic-logging-viewer && compodoc --coverageTest 100 && cd ../.. && ng lint && ng build ionic-logging-viewer --prod && ng e2e",
 		"test-watch": "ng test ionic-logging-viewer --code-coverage",
 		"lint": "ng lint",
 		"e2e": "ng e2e",
-		"codecov": "codecov",
-		"compodoc": "compodoc",
-		"semantic-release": "semantic-release --dry-run",
-		"travis-deploy-once": "travis-deploy-once"
+		"compodoc": "cd projects/ionic-logging-viewer && compodoc && cd ../..",
+		"test-and-codecov": "npm run test && codecov",
+		"build-and-release": "npm run build && semantic-release"
 	},
 	"dependencies": {
 		"@angular/animations": "^6.1.0",
