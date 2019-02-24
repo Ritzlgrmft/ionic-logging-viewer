@@ -33,7 +33,7 @@ A test app for the `ionic-logging-viewer` as well as a sample app for `ionic-log
 
 Useful commands:
 
-* `ng serve ionic-logging-viewer-app`
+* `ionic serve --project ionic-logging-viewer-app`
 
 ## ionic-logging-viewer-app-e2e
 

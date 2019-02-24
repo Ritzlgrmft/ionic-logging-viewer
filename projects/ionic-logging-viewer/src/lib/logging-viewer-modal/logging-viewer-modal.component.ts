@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 
 // import { ViewController } from "@ionic/core";
-import { NavParams, ModalController } from "@ionic/angular";
+import { NavParams, ModalController, Platform } from "@ionic/angular";
 
 import { Logger, LoggingService } from "ionic-logging-service";
 
@@ -34,6 +34,11 @@ export class LoggingViewerModalComponent implements OnInit {
 	 */
 	public translation: LoggingViewerTranslation;
 
+	/**
+	 * Flag controlling which close button will be shown.
+	 */
+	public isAndroid: boolean;
+
 	// tslint:disable-next-line:completed-docs
 	private logger: Logger;
 
@@ -44,6 +49,7 @@ export class LoggingViewerModalComponent implements OnInit {
 	 * Creates a new instance of the component.
 	 */
 	constructor(
+		platform: Platform,
 		private modalController: ModalController,
 		navParams: NavParams,
 		loggingService: LoggingService) {
@@ -54,6 +60,7 @@ export class LoggingViewerModalComponent implements OnInit {
 
 		this.language = navParams.get("language");
 		this.translation = navParams.get("translation");
+		this.isAndroid = platform.is("android");
 
 		this.logger.exit(methodName);
 	}

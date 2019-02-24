@@ -2,16 +2,12 @@
 	<ion-toolbar color=primary>
 		<ion-title>{{ getTranslation().title }}</ion-title>
 		<ion-buttons slot="start">
-			<ion-show-when modes="ios">
-				<ion-button (click)="onClose()">
-					{{ getTranslation().cancel }}
-				</ion-button>
-			</ion-show-when>
-			<ion-show-when modes="md">
-				<ion-button icon-only (click)="onClose()">
-					<ion-icon name="md-close"></ion-icon>
-				</ion-button>
-			</ion-show-when>
+			<ion-button *ngIf="!isAndroid" (click)="onClose()">
+				{{ getTranslation().cancel }}
+			</ion-button>
+			<ion-button *ngIf="isAndroid" icon-only (click)="onClose()">
+				<ion-icon name="md-close"></ion-icon>
+			</ion-button>
 		</ion-buttons>
 	</ion-toolbar>
 	<ion-toolbar>
