@@ -4,11 +4,19 @@ cache:
     - ~/.npm
 node_js:
   - '8'
-before_script:
-  - npm prune
-after_success:
-  - npm run travis-deploy-once "npm run semantic-release"
-  - npm run report-coverage
-branches:
-  except:
-    - /^v\d+\.\d+\.\d+$/
+addons:
+  apt:
+    sources:
+      - google-chrome
+    packages:
+      - google-chrome-stable
+jobs:
+  stages:
+    - test
+    - release
+  include:
+    - stage: test
+      script: npm run test-and-codecov
+    - stage: release
+      if: branch = master
+      script: npm run build-and-release
