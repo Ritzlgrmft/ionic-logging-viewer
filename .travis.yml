@@ -10,12 +10,13 @@ addons:
       - google-chrome
     packages:
       - google-chrome-stable
-script:
-  - npm test
-  - npm run build
-after_success:
-  - npm run travis-deploy-once "npm run semantic-release"
-  - npm run codecov
-branches:
-  except:
-    - /^v\d+\.\d+\.\d+$/
+jobs:
+  stages:
+    - test
+    - release
+  include:
+    - stage: test
+      script: npm run test-and-codecov
+    - stage: release
+      if: branch = master
+      script: npm run build-and-release
