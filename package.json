@@ -64,12 +64,11 @@
 		"karma-jasmine-html-reporter": "^0.2.2",
 		"ng-packagr": "^4.4.5",
 		"protractor": "~5.4.2",
-		"semantic-release": "15.10.5",
-		"travis-deploy-once": "5.0.9",
+		"semantic-release": "15.13.3",
 		"ts-node": "~7.0.1",
 		"tsickle": ">=0.34.3",
 		"tslib": "^1.9.3",
-		"tslint": "~5.12.1",
+		"tslint": "~5.13.0",
 		"typescript": "3.1.6"
 	},
 	"config": {
