@@ -22,6 +22,11 @@
 			"element",
 			"app",
 			"kebab-case"
+		],
+		"component-class-suffix": [
+			true,
+			"Component",
+			"Page"
 		]
 	}
 }
