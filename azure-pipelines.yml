@@ -1,0 +1,69 @@
+trigger:
+- master
+
+pool:
+  name: Hosted
+  
+steps:
+- task: NodeTool@0
+  displayName: 'Use Node 11.x'
+  inputs:
+    versionSpec: 11.x
+
+- task: Npm@1
+  displayName: 'npm install'
+  inputs:
+    verbose: false
+
+- task: Npm@1
+  displayName: 'npm run test-coverage'
+  inputs:
+    command: custom
+    verbose: false
+    customCommand: 'run test-coverage'
+
+- task: Npm@1
+  displayName: 'npm run codecov'
+  inputs:
+    command: custom
+    verbose: false
+    customCommand: 'run codecov'
+
+- task: Npm@1
+  displayName: 'npm run test-compodoc'
+  condition: succeededOrFailed()
+  inputs:
+    command: custom
+    verbose: false
+    customCommand: 'run test-compodoc'
+
+- task: Npm@1
+  displayName: 'npm run test-e2e'
+  condition: succeededOrFailed()
+  inputs:
+    command: custom
+    verbose: false
+    customCommand: 'run test-e2e'
+
+- task: Npm@1
+  displayName: 'npm run lint'
+  condition: succeededOrFailed()
+  inputs:
+    command: custom
+    verbose: false
+    customCommand: 'run lint'
+
+- task: Npm@1
+  displayName: 'npm run build'
+  inputs:
+    command: custom
+    verbose: false
+    customCommand: 'run build'
+
+- task: Npm@1
+  displayName: 'npm run semantic-release'
+  inputs:
+    command: custom
+    verbose: false
+    customCommand: 'run semantic-release'
+
