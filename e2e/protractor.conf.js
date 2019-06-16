@@ -12,7 +12,8 @@ exports.config = {
 	],
 	capabilities: {
 		chromeOptions: {
-			args: ["--headless"]
+			args: ["--headless"],
+			binary: process.env.CHROME_BIN
 		},
 		'browserName': 'chrome'
 	},
