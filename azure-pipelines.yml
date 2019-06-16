@@ -15,13 +15,6 @@ steps:
   inputs:
     verbose: false
 
-- task: Npm@1
-  displayName: 'npm run test-coverage'
-  inputs:
-    command: custom
-    verbose: false
-    customCommand: 'run test-coverage'
-
 - task: DeleteFiles@1
   displayName: 'delete unit test results'
   inputs:
@@ -29,11 +22,11 @@ steps:
     Contents: 'TESTS*.xml'
 
 - task: Npm@1
-  displayName: 'npm run codecov'
+  displayName: 'npm run test-coverage'
   inputs:
     command: custom
     verbose: false
-    customCommand: 'run codecov'
+    customCommand: 'run test-coverage'
 
 - task: PublishTestResults@2
   displayName: 'publish unit test results'
@@ -43,6 +36,13 @@ steps:
     testRunTitle: Unit Tests
     testResultsFormat: JUnit
     testResultsFiles: "**/TESTS*.xml"
+
+- task: Npm@1
+  displayName: 'npm run codecov'
+  inputs:
+    command: custom
+    verbose: false
+    customCommand: 'run codecov'
 
 - task: Npm@1
   displayName: 'npm run test-compodoc'
