@@ -1,9 +1,10 @@
 // Protractor configuration file, see link for more information
 // https://github.com/angular/protractor/blob/master/lib/config.ts
 
-process.env.CHROME_BIN = process.env.CHROME_BIN || require("puppeteer").executablePath();
-
 const { SpecReporter } = require('jasmine-spec-reporter');
+const { JUnitXmlReporter } = require('jasmine-reporters');
+
+process.env.CHROME_BIN = process.env.CHROME_BIN || require("puppeteer").executablePath();
 
 exports.config = {
 	allScriptsTimeout: 11000,
@@ -30,5 +31,10 @@ exports.config = {
 			project: require('path').join(__dirname, './tsconfig.e2e.json')
 		});
 		jasmine.getEnv().addReporter(new SpecReporter({ spec: { displayStacktrace: true } }));
+		var junitReporter = new JUnitXmlReporter({
+			savePath: require('path').join(__dirname, './junit'),
+			consolidateAll: true
+		});
+		jasmine.getEnv().addReporter(junitReporter);
 	}
 };

@@ -22,12 +22,27 @@ steps:
     verbose: false
     customCommand: 'run test-coverage'
 
+- task: DeleteFiles@1
+  displayName: 'delete unit test results'
+  inputs:
+    SourceFolder: projects/ionic-logging-viewer/junit
+    Contents: 'TESTS*.xml'
+
 - task: Npm@1
   displayName: 'npm run codecov'
   inputs:
     command: custom
     verbose: false
     customCommand: 'run codecov'
+
+- task: PublishTestResults@2
+  displayName: 'publish unit test results'
+  condition: succeededOrFailed()
+  inputs:
+    searchFolder: $(System.DefaultWorkingDirectory)/projects/ionic-logging-viewer/junit
+    testRunTitle: Unit Tests
+    testResultsFormat: JUnit
+    testResultsFiles: "**/TESTS*.xml"
 
 - task: Npm@1
   displayName: 'npm run test-compodoc'
@@ -44,6 +59,12 @@ steps:
     verbose: false
     customCommand: 'run build'
 
+- task: DeleteFiles@1
+  displayName: 'delete e2e test results'
+  inputs:
+    SourceFolder: e2e/junit
+    Contents: 'TESTS*.xml'
+
 - task: Npm@1
   displayName: 'npm run test-e2e'
   condition: succeededOrFailed()
@@ -51,6 +72,15 @@ steps:
     command: custom
     verbose: false
     customCommand: 'run test-e2e'
+
+- task: PublishTestResults@2
+  displayName: 'publish e2e test results'
+  condition: succeededOrFailed()
+  inputs:
+    searchFolder: $(System.DefaultWorkingDirectory)/e2e/junit
+    testRunTitle: E2E Tests
+    testResultsFormat: JUnit
+    testResultsFiles: "**/junit*.xml"
 
 - task: Npm@1
   displayName: 'npm run lint'
