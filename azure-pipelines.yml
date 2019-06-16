@@ -38,19 +38,19 @@ steps:
     customCommand: 'run test-compodoc'
 
 - task: Npm@1
+  displayName: 'npm run build'
+  inputs:
+    command: custom
+    verbose: false
+    customCommand: 'run build'
+
+- task: Npm@1
   displayName: 'npm run test-e2e'
   condition: succeededOrFailed()
   inputs:
     command: custom
     verbose: false
     customCommand: 'run test-e2e'
-
-- task: Npm@1
-  displayName: 'npm run build'
-  inputs:
-    command: custom
-    verbose: false
-    customCommand: 'run build'
 
 - task: Npm@1
   displayName: 'npm run lint'
